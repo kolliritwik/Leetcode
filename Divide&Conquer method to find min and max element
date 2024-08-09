@@ -1,0 +1,12 @@
+def minmax(arr,low,high):
+    if low==high:
+        return arr[low],arr[low]
+    elif low==high-1:
+        return (arr[high],arr[low]) if arr[low]>arr[high] else (arr[low],arr[high])
+    else:
+        mid=(low+high)//2
+        lmin,lmax=minmax(arr,low,mid)
+        rmin,rmax=minmax(arr,mid+1,high)
+        return lmin if lmin<rmin else rmin,lmax if lmax>rmax else rmax
+arr=[88,19,94,33,444,66]
+print(minmax(arr,0,len(arr)-1))
